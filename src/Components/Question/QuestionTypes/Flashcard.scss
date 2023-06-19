@@ -1,6 +1,7 @@
 .flip_card_animation {
   position: relative;
-  perspective: 5000px;
+  perspective: 500000px;
+  height: fit-content;
 
   .content {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);

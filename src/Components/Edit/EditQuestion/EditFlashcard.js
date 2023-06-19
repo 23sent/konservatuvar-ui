@@ -15,7 +15,7 @@ function EditFlashcard({ question }) {
         <Col className="py-3">
           <Card>
             <Card.Body>
-              <div className="display-6 mb-3">Ön yüz</div>
+              <div className="display-6 mb-3 ">Ön yüz</div>
               <EditContents
                 contents={front}
                 onChange={(contents) => {

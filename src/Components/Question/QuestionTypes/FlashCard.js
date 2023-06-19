@@ -16,8 +16,8 @@ function Flashcard({ question }) {
   }
   return (
     <div>
-      <div className={`d-flex justify-content-center flip_card_animation ${isBack ? 'on-back' : ''}`}>
-        <Card className="content" onClick={() => setIsBack(!isBack)}>
+      <div className={`d-flex mw-100 overflow-x-auto flip_card_animation ${isBack ? 'on-back' : ''}`}>
+        <Card className="content mx-auto" onClick={() => setIsBack(!isBack)}>
           <Card.Body className="front d-flex align-items-center justify-content-center">
             <div className="d-flex align-items-center justify-content-center">
               {front?.length && <Contents contents={front} />}
