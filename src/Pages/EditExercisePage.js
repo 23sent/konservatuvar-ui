@@ -1,9 +1,10 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   createQuestionRequest,
+  deleteExersiceRequest,
   endEditingExercise,
   getExerciseRequest,
   startEditingExercise,
@@ -15,9 +16,11 @@ import EditQuestionModal from '../Components/Edit/EditQuestion/EditQuestionModal
 import AppPageHead from './Parts/AppPageHead';
 import QuestionTypeDropdown from '../Components/Edit/EditQuestion/QuestionTypeDropdown';
 import { ExampleMultiSelectionQuestion2, QuestionTypes } from '../Constants/question';
+import Swal from 'sweetalert2';
 
 function EditExercisePage({ ...props }) {
   const { exerciseId } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
@@ -41,7 +44,27 @@ function EditExercisePage({ ...props }) {
       dispatch(createQuestionRequest(exercise_id, { ...ExampleMultiSelectionQuestion2 }));
     } else if (questionType === QuestionTypes.Rhythm) {
       dispatch(createQuestionRequest(exercise_id, { type: QuestionTypes.Rhythm, rhythm: [] }));
+    } else if (questionType === QuestionTypes.Flashcard) {
+      dispatch(createQuestionRequest(exercise_id, { type: QuestionTypes.Flashcard, front: [], back: [] }));
     }
+  }
+
+  function handleDeleteExercise() {
+    Swal.fire({
+      title: 'Emin misiniz?',
+      text: 'Egzerisizi silerseniz, egzersizin altındaki bütün sorularda silinecektir.',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#3085d6',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Sil!',
+      heightAuto: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteExersiceRequest(exercise?.id));
+        navigate('/app/my/exercises');
+      }
+    });
   }
 
   return (
@@ -56,13 +79,25 @@ function EditExercisePage({ ...props }) {
                   onChange={(questionType) => handleAddQuestion(questionType)}
                 />
               </div>
-              <Button
-                onClick={() => {
-                  dispatch(startEditingExercise(exercise));
-                }}
-              >
-                Egzersiz Bilgilerini Düzenle
-              </Button>
+              <div className="d-flex gap-2 ms-3">
+                <Button
+                  variant="danger"
+                  className="text-nowrap"
+                  onClick={() => {
+                    handleDeleteExercise();
+                  }}
+                >
+                  Sil
+                </Button>
+                <Button
+                  className="text-nowrap"
+                  onClick={() => {
+                    dispatch(startEditingExercise(exercise));
+                  }}
+                >
+                  Düzenle
+                </Button>
+              </div>
             </div>
           </AppPageHead>
         </Col>

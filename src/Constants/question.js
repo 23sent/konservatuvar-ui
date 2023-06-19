@@ -1,6 +1,6 @@
 export const QuestionTypes = {
   MultiSelection: 'MULTI_SELECTION',
-  FlashCard: 'FLASH_CARD',
+  Flashcard: 'FLASH_CARD',
   TypedResponse: 'TYPED_RESPONSE',
   Rhythm: 'RHYTHM',
 };
@@ -8,6 +8,8 @@ export const QuestionTypes = {
 export const ContentTypes = {
   Text: 'TEXT',
   AbcNotation: 'ABC_NOTATION',
+  Image: 'IMAGE',
+  Sound: 'SOUND',
 };
 
 // Example

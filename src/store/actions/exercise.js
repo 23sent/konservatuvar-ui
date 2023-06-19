@@ -85,3 +85,8 @@ export const updateExerciseRequest = (exercise) => ({
   type: actionTypes.UPDATE_EXERCISE_REQUEST,
   payload: { ...exercise },
 });
+
+export const deleteExersiceRequest = (exercise_id) => ({
+  type: actionTypes.DELETE_EXERCISE_REQUEST,
+  payload: { exercise_id },
+});

@@ -48,7 +48,7 @@ function RhythmQuestion({ question, ...props }) {
       }
     }
 
-    return (score * 100) / answerCount;
+    return score / answerCount;
   }
 
   useEffect(() => {
@@ -108,7 +108,7 @@ function RhythmQuestion({ question, ...props }) {
 
   return (
     <div>
-      <div>Bir ritim girin:</div>
+      <div className="mb-3">Ritmi dinleyin ve tekrarlayın:</div>
       <div className="d-flex align-items-center justify-content-center gap-3 mb-4 flex-wrap">
         {rhythm.map((beat, index) => (
           <div

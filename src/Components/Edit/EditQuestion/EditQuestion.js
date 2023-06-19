@@ -50,7 +50,7 @@ function EditQuestion({ question, index }) {
           </>
         </div>
       </Card.Header>
-      <Card.Body>{<Question question={question} />}</Card.Body>
+      <Card.Body className="">{<Question question={question} />}</Card.Body>
     </Card>
   );
 }

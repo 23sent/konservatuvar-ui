@@ -60,9 +60,24 @@ function* updateExercisesSaga(action) {
   }
 }
 
+function* watchDeleteExercisesSaga() {
+  yield takeLatest(actionTypes.DELETE_EXERCISE_REQUEST, deleteExercisesSaga);
+}
+
+function* deleteExercisesSaga(action) {
+  try {
+    const { exercise_id } = action.payload;
+    const { data } = yield apiCall('delete', `exercise/${exercise_id}`);
+    yield put(getMyExercisesRequest());
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export default function* exerciseSagas() {
   yield all([fork(watchGetExerciseSaga)]);
   yield all([fork(watchGetMyExercisesSaga)]);
   yield all([fork(watchCreateExercisesSaga)]);
   yield all([fork(watchUpdateExercisesSaga)]);
+  yield all([fork(watchDeleteExercisesSaga)]);
 }

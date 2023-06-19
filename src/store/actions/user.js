@@ -32,3 +32,12 @@ export const signInError = (error) => ({
 export const signOut = () => ({
   type: actionTypes.SIGN_OUT,
 });
+
+export const getUserRequest = () => ({
+  type: actionTypes.GET_USER_REQUEST,
+});
+
+export const getUserData = (user) => ({
+  type: actionTypes.GET_USER_DATA,
+  payload: { user },
+});

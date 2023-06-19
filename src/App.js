@@ -4,12 +4,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import routes from './routes';
 import { LocalStorageKeys } from './Constants/localStorageKeys';
-import { signInData } from './store/actions';
+import { getUserRequest, signInData } from './store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthContext } from './Context/AuthContext';
 import { BreadcrumbsContext } from './Context/BreadcrumbsContext';
 
 function App() {
+  const dispatch = useDispatch();
   const keys = Object.keys(routes);
 
   // const dispatch = useDispatch();
@@ -25,6 +26,10 @@ function App() {
   // }, []);
 
   const token = localStorage.getItem(LocalStorageKeys.TOKEN);
+
+  if (token && !user?.id) {
+    dispatch(getUserRequest());
+  }
 
   return (
     <>

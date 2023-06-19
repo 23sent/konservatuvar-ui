@@ -1,7 +1,6 @@
 import React from 'react';
 import { ContentTypes } from '../../Constants/question';
-import { TextContent } from './ContentTypes';
-import AbcContent from './ContentTypes/AbcContent';
+import { AbcContent, ImageContent, SoundContent, TextContent } from './ContentTypes';
 
 function Content({ ...props }) {
   const { content } = props;
@@ -10,6 +9,8 @@ function Content({ ...props }) {
     <>
       {type === ContentTypes.Text && <TextContent {...props} />}
       {type === ContentTypes.AbcNotation && <AbcContent {...props} />}
+      {type === ContentTypes.Image && <ImageContent {...props} />}
+      {type === ContentTypes.Sound && <SoundContent {...props} />}
     </>
   );
 }

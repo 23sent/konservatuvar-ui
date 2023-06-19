@@ -1,9 +1,10 @@
-import { apiCall } from '../../Helpers/api';
+import { apiCall, uploadPost } from '../../Helpers/api';
 import actionTypes from '../actionTypes';
 
 import { all, fork, put, takeLatest } from 'redux-saga/effects';
 import { getExerciseRequest } from '../actions';
 import store from '..';
+import axios from 'axios';
 
 function* watchCreateQuestionSaga() {
   yield takeLatest(actionTypes.CREATE_QUESTION_REQUEST, createQuestionSaga);
@@ -58,8 +59,23 @@ function* updateQuestionSaga(action) {
   }
 }
 
+function* watchUploadFileSaga() {
+  yield takeLatest(actionTypes.UPLOAD_FILE_REQUEST, uploadFileSaga);
+}
+
+function* uploadFileSaga(action) {
+  try {
+    const { form_data } = action.payload;
+    console.log(form_data);
+    const { data } = yield uploadPost(`question/upload/${1}`, form_data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export default function* questionSagas() {
   yield all([fork(watchCreateQuestionSaga)]);
   yield all([fork(watchDeleteQuestionSaga)]);
   yield all([fork(watchUpdateQuestionSaga)]);
+  yield all([fork(watchUploadFileSaga)]);
 }

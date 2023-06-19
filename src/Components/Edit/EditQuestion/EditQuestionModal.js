@@ -5,6 +5,7 @@ import { endEditingQuestion, updateQuestionRequest } from '../../../store/action
 import EditMultiSelection from './EditMultiSelection';
 import { QuestionTypes } from '../../../Constants/question';
 import EditRhythm from './EditRhythm';
+import EditFlashcard from './EditFlashcard';
 
 function EditQuestionModal({ onHide, onSave, ...props }) {
   const dispatch = useDispatch();
@@ -19,6 +20,8 @@ function EditQuestionModal({ onHide, onSave, ...props }) {
       return <EditMultiSelection question={editingQuestion} />;
     } else if (type === QuestionTypes.Rhythm) {
       return <EditRhythm question={editingQuestion} />;
+    } else if (type === QuestionTypes.Flashcard) {
+      return <EditFlashcard question={editingQuestion} />;
     }
     return <></>;
   }
@@ -44,7 +47,9 @@ function EditQuestionModal({ onHide, onSave, ...props }) {
           {editingQuestion?.id && (
             <>
               <Button onClick={(e) => saveChanges()}>Save</Button>
-              <Button onClick={(e) => dispatch(endEditingQuestion())}>Cancel</Button>
+              <Button variant="secondary" onClick={(e) => dispatch(endEditingQuestion())}>
+                Cancel
+              </Button>
             </>
           )}
         </div>

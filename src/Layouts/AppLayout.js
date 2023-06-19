@@ -22,7 +22,9 @@ function AppLayout({ children }) {
 
         <div className="d-flex flex-grow-1 align-items-stretch overflow-hidden">
           <LeftPanel />
-          <Container className="px-sm-4 min-h-100 mh-100 flex-grow-1 overflow-auto">{children}</Container>
+          <div className="min-h-100 mh-100 flex-grow-1 overflow-auto">
+            <Container className="px-sm-4">{children}</Container>
+          </div>
         </div>
       </div>
     </>

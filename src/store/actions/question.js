@@ -43,3 +43,8 @@ export const updateQuestionData = () => ({
 export const updateQuestionError = (error) => ({
   type: actionTypes.UPDATE_QUESTION_ERROR,
 });
+
+export const uploadFileRequest = (form_data) => ({
+  type: actionTypes.UPLOAD_FILE_REQUEST,
+  payload: { form_data },
+});

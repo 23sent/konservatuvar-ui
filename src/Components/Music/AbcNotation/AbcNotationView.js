@@ -6,7 +6,7 @@ function AbcNotationView({ value, ...props }) {
   const refCanvas = useRef();
 
   useEffect(() => {
-    abcjs.renderAbc(refCanvas.current.id, value, { scale: 1 });
+    abcjs.renderAbc(refCanvas.current.id, value, { scale: 2 });
   }, [value]);
 
   return <div id={unique_id} ref={refCanvas}></div>;

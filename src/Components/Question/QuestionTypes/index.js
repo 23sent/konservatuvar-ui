@@ -1,5 +1,5 @@
 import MultiSelection from './MultiSelection';
-import FlashCard from './FlashCard';
+import Flashcard from './Flashcard';
 import RhythmQuestion from './RhythmQuestion';
 
-export { MultiSelection, FlashCard, RhythmQuestion };
+export { MultiSelection, Flashcard, RhythmQuestion };

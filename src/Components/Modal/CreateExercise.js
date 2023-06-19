@@ -21,7 +21,6 @@ function CreateExercise({ defaultExercise = {}, show, onHide, onSave, ...props }
   }
   return (
     <Modal centered show={show} onHide={() => handleOnHide()}>
-      <Modal.Header></Modal.Header>
       <Modal.Body>
         <Form.Group>
           <Form.Label>Title</Form.Label>
@@ -49,6 +48,14 @@ function CreateExercise({ defaultExercise = {}, show, onHide, onSave, ...props }
           }}
         >
           Save
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            onHide();
+          }}
+        >
+          Cancel
         </Button>
       </Modal.Footer>
     </Modal>

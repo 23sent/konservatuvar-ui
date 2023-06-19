@@ -54,3 +54,12 @@ export const apiCall = async (method, path, data, params, responseType) => {
   });
   return res;
 };
+
+export async function uploadPost(path, data) {
+  return await axios.post(API_URL + path, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+}

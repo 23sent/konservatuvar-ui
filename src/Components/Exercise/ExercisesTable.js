@@ -6,7 +6,7 @@ function ExercisesTable({ exercises, onEdit, ...props }) {
     <div className="d-flex w-100 justify-content-center flex-wrap gap-4">
       {Boolean(exercises?.length) &&
         exercises.map((exercise, index) => (
-          <div className="" style={{ width: '300px' }} key={index}>
+          <div className="" style={{ width: '300px' }} key={exercise.id}>
             <ExerciseCard exercise={exercise} onEdit={onEdit} />
           </div>
         ))}

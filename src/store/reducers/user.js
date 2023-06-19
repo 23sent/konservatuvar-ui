@@ -33,6 +33,12 @@ const userReducer = (state = initialState, action) => {
         user: {},
         token: null,
       };
+    case actionTypes.GET_USER_DATA:
+      localStorage.setItem(LocalStorageKeys.USER_INFO, JSON.stringify(payload.user));
+      return {
+        ...state,
+        user: { ...payload.user },
+      };
     default:
       return state;
   }

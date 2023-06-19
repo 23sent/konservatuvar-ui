@@ -18,9 +18,9 @@ function StartExercise() {
           questions.map((question, index) => (
             <Accordion className="my-3">
               <Accordion.Item eventKey="0">
-                <Accordion.Header>{index}. Soru</Accordion.Header>
+                <Accordion.Header>{index + 1}. Soru</Accordion.Header>
                 <Accordion.Body>
-                  <Question key={index} question={{ ...question }} />
+                  <Question key={question.id} question={{ ...question }} />
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

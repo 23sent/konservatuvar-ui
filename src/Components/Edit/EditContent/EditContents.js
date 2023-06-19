@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { Icon, IconButton } from '../../Common';
 import ContentDropdown from './ContentDropdown';
 import AbcContentInput from './AbcContentInput';
+import ImageContentInput from './ImageContentInput';
+import SoundContentInput from './SoundContentInput';
 
 function EditContents({ contents, onChange, ...props }) {
   function handleTypeChange(index, type) {
@@ -19,6 +21,18 @@ function EditContents({ contents, onChange, ...props }) {
       contents[index] = {
         type: ContentTypes.AbcNotation,
         abc_notation: '',
+      };
+      onChange(contents);
+    } else if (type === ContentTypes.Image) {
+      contents[index] = {
+        type: ContentTypes.Image,
+        url: null,
+      };
+      onChange(contents);
+    } else if (type === ContentTypes.Sound) {
+      contents[index] = {
+        type: ContentTypes.Sound,
+        url: null,
       };
       onChange(contents);
     }
@@ -58,6 +72,26 @@ function EditContents({ contents, onChange, ...props }) {
             )}
             {type === ContentTypes.AbcNotation && (
               <AbcContentInput
+                key={index}
+                content={content}
+                onChange={(content) => {
+                  contents[index] = content;
+                  onChange(contents);
+                }}
+              />
+            )}
+            {type === ContentTypes.Image && (
+              <ImageContentInput
+                key={index}
+                content={content}
+                onChange={(content) => {
+                  contents[index] = content;
+                  onChange(contents);
+                }}
+              />
+            )}
+            {type === ContentTypes.Sound && (
+              <SoundContentInput
                 key={index}
                 content={content}
                 onChange={(content) => {

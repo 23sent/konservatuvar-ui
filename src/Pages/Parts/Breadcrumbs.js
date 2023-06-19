@@ -22,7 +22,11 @@ function CategoryCrumb() {
 }
 
 function Crumb({ title, path }) {
-  return <NavLink to={`${path}`}>{title}</NavLink>;
+  return (
+    <NavLink className="text-nowrap" to={`${path}`}>
+      {title}
+    </NavLink>
+  );
 }
 
 function Breadcrumbs({ children }) {
