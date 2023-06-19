@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Button, Dropdown } from 'react-bootstrap';
 import { QuestionTypes } from '../../../Constants/question';
 
 function QuestionTypeDropdown({ placeholder, value, onChange, ...props }) {
@@ -24,7 +24,7 @@ function QuestionTypeDropdown({ placeholder, value, onChange, ...props }) {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle as="div" className="d-flex align-items-center">
+      <Dropdown.Toggle as={Button} className="d-flex align-items-center remove_toggle_after">
         {getTypeName(value)}
       </Dropdown.Toggle>
       <Dropdown.Menu>{getOptions()}</Dropdown.Menu>

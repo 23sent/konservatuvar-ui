@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './Theme.scss';
 import './App.scss';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -8,6 +7,7 @@ import { LocalStorageKeys } from './Constants/localStorageKeys';
 import { signInData } from './store/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthContext } from './Context/AuthContext';
+import { BreadcrumbsContext } from './Context/BreadcrumbsContext';
 
 function App() {
   const keys = Object.keys(routes);
@@ -41,10 +41,15 @@ function App() {
                       exact={route.exact}
                       path={route.path}
                       element={
-                        <layout.component>
-                          <route.component />
-                        </layout.component>
+                        <BreadcrumbsContext.Provider value={route?.crumbs}>
+                          <layout.component>
+                            <route.component />
+                          </layout.component>
+                        </BreadcrumbsContext.Provider>
                       }
+                      handle={{
+                        test: 'test',
+                      }}
                     />
                   </Route>
                 );

@@ -20,6 +20,7 @@ const initialState = {
   myExercises: [],
   currentQuestionIndex: 0,
   totalAccuracy: 0,
+  question_accuracies: {},
 
   editExercise: {},
 };
@@ -39,6 +40,7 @@ const exerciseReducer = (state = initialState, action) => {
         state: payload.state,
         totalAccuracy: 0,
         currentQuestionIndex: 0,
+        question_accuracies: {},
       };
     case actionTypes.NEXT_QUESTION:
       let exerciseState = state.state;
@@ -52,11 +54,28 @@ const exerciseReducer = (state = initialState, action) => {
         currentQuestionIndex: currentQuestionIndex,
         state: exerciseState,
       };
+    case actionTypes.END_EXERCISE:
+      return {
+        ...state,
+        state: exerciseStates.ENDED,
+        currentQuestionIndex: 0,
+      };
+    case actionTypes.RESET_EXERCISE:
+      return {
+        ...state,
+        state: exerciseStates.BEFORE_START,
+        currentQuestionIndex: 0,
+        totalAccuracy: 0,
+        question_accuracies: {},
+      };
     case actionTypes.UPDATE_QUESTION_ACCURACY_DATA:
       const { question_id, accuracy } = payload;
+      const question_accuracies = { ...state.question_accuracies };
+      question_accuracies[question_id] = { question_id, accuracy };
       return {
         ...state,
         totalAccuracy: state.totalAccuracy + accuracy,
+        question_accuracies: question_accuracies,
       };
     case actionTypes.GET_MY_EXERCISES_DATA:
       return {
@@ -64,7 +83,6 @@ const exerciseReducer = (state = initialState, action) => {
         myExercises: [...payload.exercises],
       };
     case actionTypes.SET_EDIT_EXERCISE:
-      console.log('p', payload);
       return {
         ...state,
         editExercise: { ...payload.exercise },

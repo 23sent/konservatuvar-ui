@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Accordion, Button, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { startExercise } from '../../store/actions';
 import Question from '../Question/Question';
@@ -14,14 +14,16 @@ function StartExercise() {
   return (
     <>
       <div>
-        <Button onClick={() => dispatch(startExercise(id))}>Start Exercise</Button>
-      </div>
-      <div>
         {Boolean(questions?.length) &&
           questions.map((question, index) => (
-            <div className="my-3">
-              <Question key={index} question={{ ...question }} />{' '}
-            </div>
+            <Accordion className="my-3">
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>{index}. Soru</Accordion.Header>
+                <Accordion.Body>
+                  <Question key={index} question={{ ...question }} />
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           ))}
       </div>
     </>

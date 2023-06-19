@@ -14,7 +14,7 @@ function SignUp() {
   }
 
   return (
-    <Card.Body className="d-flex flex-column" style={{ minHeight: '400px' }}>
+    <Card.Body className="d-flex flex-column px-5" style={{ minHeight: '320px' }}>
       <div className="d-grid gap-3">
         <div>
           <Form.Label>Name</Form.Label>
@@ -29,7 +29,7 @@ function SignUp() {
           <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
       </div>
-      <div className="d-flex flex-grow-1 align-items-end justify-content-end">
+      <div className="d-flex flex-grow-1 align-items-end justify-content-end mt-3">
         <Button onClick={() => handleSignUp()}>Sign up</Button>
       </div>
     </Card.Body>

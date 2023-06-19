@@ -13,7 +13,7 @@ function SignIn() {
   }
 
   return (
-    <Card.Body className="d-flex flex-column" style={{ minHeight: '400px' }}>
+    <Card.Body className="d-flex flex-column px-5" style={{ minHeight: '320px' }}>
       <div className="d-grid gap-3">
         <div>
           <Form.Label>Email</Form.Label>

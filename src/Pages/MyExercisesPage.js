@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createExerciseRequest, getMyExercisesRequest } from '../store/actions';
 import { Button, Col, Row } from 'react-bootstrap';
 import ExercisesTable from '../Components/Exercise/ExercisesTable';
 import CreateExercise from '../Components/Modal/CreateExercise';
+import AppPageHead from './Parts/AppPageHead';
 
 function MyExercisesPage() {
   const dispatch = useDispatch();
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(getMyExercisesRequest());
   }, []);
 
@@ -25,17 +26,16 @@ function MyExercisesPage() {
     <>
       <Row>
         <Col className="p-2">
-          <div className="h2">Egzersizlerim</div>
+          <AppPageHead title={'Egzersizlerim'}>
+            <div className="d-flex justify-content-end">
+              <Button onClick={() => setShowAddModal(true)}>Yeni Egzersiz Oluştur</Button>
+            </div>
+          </AppPageHead>
         </Col>
       </Row>
-      <Row className="my-2 py-3 px-4">
+      <Row className="my-2 py-3">
         <Col>
           <ExercisesTable exercises={myExercises} onEdit={true} />
-        </Col>
-      </Row>
-      <Row className="my-2 py-3 px-4">
-        <Col>
-          <Button onClick={() => setShowAddModal(true)}>Yeni Egzersiz Oluştur</Button>
         </Col>
       </Row>
 

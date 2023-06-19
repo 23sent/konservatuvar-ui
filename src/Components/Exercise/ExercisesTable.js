@@ -3,10 +3,10 @@ import ExerciseCard from './ExerciseCard';
 
 function ExercisesTable({ exercises, onEdit, ...props }) {
   return (
-    <div className="d-flex justify-cotent-between flex-wrap gap-3">
+    <div className="d-flex w-100 justify-content-center flex-wrap gap-4">
       {Boolean(exercises?.length) &&
         exercises.map((exercise, index) => (
-          <div className="" style={{ minWidth: '300px', maxWidth: '450px' }} key={index}>
+          <div className="" style={{ width: '300px' }} key={index}>
             <ExerciseCard exercise={exercise} onEdit={onEdit} />
           </div>
         ))}

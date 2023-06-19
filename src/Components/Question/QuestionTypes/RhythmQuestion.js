@@ -62,9 +62,9 @@ function RhythmQuestion({ question, ...props }) {
       setState(STATES.WAIT);
 
       const stateMachineGenerator = ClockStateMachine([
-        { until: 16, state: STATES.WAIT },
+        { until: 8, state: STATES.WAIT },
         { until: rhythm.length, state: STATES.LISTEN_EXAMPLE },
-        { until: 16, state: STATES.WAIT },
+        { until: 8, state: STATES.WAIT },
         { until: rhythm.length, state: STATES.GET_ANSWER },
         { until: 1, state: STATES.END },
       ]);
@@ -81,13 +81,14 @@ function RhythmQuestion({ question, ...props }) {
           setState(state);
 
           if (state === STATES.LISTEN_EXAMPLE) {
-            if (rhythm[beat]) synth.triggerAttackRelease('A4', '16n', time + 0.1);
+            if (rhythm[beat]) synth.triggerAttackRelease('A4', 0.1, time);
           } else {
-            synth.triggerAttackRelease('C4', '16n', time + 0.1);
+            synth.triggerAttackRelease('C4', 0.1, time);
           }
         }
       }, '4n');
 
+      Tone.Transport.bpm.value = 80;
       Tone.Transport.start();
     } else if (stateRef.current === STATES.GET_ANSWER) {
       answer[on_beat] = true;
@@ -108,7 +109,7 @@ function RhythmQuestion({ question, ...props }) {
   return (
     <div>
       <div>Bir ritim girin:</div>
-      <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
+      <div className="d-flex align-items-center justify-content-center gap-3 mb-4 flex-wrap">
         {rhythm.map((beat, index) => (
           <div
             key={index}
@@ -127,7 +128,7 @@ function RhythmQuestion({ question, ...props }) {
         >
           <div className="w-100 h-100 d-flex align-items-center justify-content-center">
             {state === STATES.NOT_STARTED && <>Başlamak için tıklayın</>}
-            {state === STATES.WAIT && <>{4 - Math.round(on_beat / 4)}</>}
+            {state === STATES.WAIT && <>{5 - Math.round(on_beat / 8)}</>}
             {state === STATES.LISTEN_EXAMPLE && <>Ritmi Dinleyin</>}
             {state === STATES.GET_ANSWER && <>Ritmi Tekrar Edin</>}
             {state === STATES.END && <></>}

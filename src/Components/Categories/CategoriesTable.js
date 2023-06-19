@@ -6,9 +6,9 @@ function CategoriesTable({ ...props }) {
   const categories = useSelector((state) => state.categoriesReducer?.categories);
 
   return (
-    <div className="d-flex justify-cotent-between flex-wrap gap-3">
+    <div className="d-flex justify-content-center flex-wrap gap-4">
       {categories.map((category, index) => (
-        <div style={{ minWidth: '300px', maxWidth: '400px' }} key={index}>
+        <div style={{ minWidth: '400px', maxWidth: '400px' }} key={index}>
           <CategoryCard {...category} />
         </div>
       ))}

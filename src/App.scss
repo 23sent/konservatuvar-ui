@@ -1,3 +1,46 @@
+@import './Theme.scss';
+@import "./node_modules/bootstrap/scss/bootstrap";
+
 .min-h-100 {
     min-height: 100%;
+}
+
+.left-panel-links {
+    .nav-item {
+
+    }
+
+    .nav-link {
+
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.breadcrumbs {
+    a {
+        color: unset !important;
+        text-decoration: unset !important;
+    }
+    a:active {
+        color: unset !important;
+        text-decoration: unset !important;
+    }
+}
+
+
+.overflow-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.remove_toggle_after {
+    &::after {
+        content: unset !important;
+    }
 }

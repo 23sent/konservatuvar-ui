@@ -1,14 +1,30 @@
 import React from 'react';
-import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import NavigationBar from '../Components/NavigationBar/NavigationBar';
-import CategoriesTable from '../Components/Categories/CategoriesTable';
+import LeftPanel from '../Components/Panel/LeftPanel';
+import AppBackground from '../Assets/img/app_background.png';
 
 function AppLayout({ children }) {
   return (
     <>
-      <NavigationBar />
+      <div
+        className="w-100 d-flex flex-column"
+        style={{
+          minHeight: '100%',
+          maxHeight: '100%',
+          // backgroundImage: `url(${AppBackground})`,
+          // backgroundPosition: '70% bottom',
+          // backgroundRepeat: 'repeat',
+          // backgroundSize: '50%',
+        }}
+      >
+        <NavigationBar />
 
-      <Container className="mb-3 mt-5 py-3">{children}</Container>
+        <div className="d-flex flex-grow-1 align-items-stretch overflow-hidden">
+          <LeftPanel />
+          <Container className="px-sm-4 min-h-100 mh-100 flex-grow-1 overflow-auto">{children}</Container>
+        </div>
+      </div>
     </>
   );
 }

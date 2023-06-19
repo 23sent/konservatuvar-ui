@@ -10,6 +10,7 @@ import EditExercisePage from './Pages/EditExercisePage';
 import ProtectedRouteLayout from './Routes/ProtectedRouteLayout';
 import NotAuthLayout from './Routes/NotAuthLayout';
 import MyExercisesPage from './Pages/MyExercisesPage';
+import { CategoryCrumb, Crumb, ExerciseCrumb } from './Pages/Parts/Breadcrumbs';
 
 const routes = {
   MainLayout: {
@@ -37,12 +38,14 @@ const routes = {
         exact: true,
         component: CategoryPage,
         routeLayout: Outlet,
+        crumbs: [<Crumb title="Kategoriler" path="/app/" />, <CategoryCrumb />],
       },
       {
         path: '/app/exercise/:exerciseId',
         exact: true,
         component: ExercisePage,
         routeLayout: Outlet,
+        crumbs: [<Crumb title="Kategoriler" path="/app/" />, <CategoryCrumb />, <ExerciseCrumb />],
       },
       {
         path: '/app/account',
@@ -55,12 +58,17 @@ const routes = {
         exact: true,
         component: MyExercisesPage,
         routeLayout: ProtectedRouteLayout,
+        crumbs: [
+          <Crumb title="Konservatuvar" path="/app" />,
+          <Crumb title="Egzersizlerim" path="/app/my/exercises/" />,
+        ],
       },
       {
         path: 'app/my/exercises/edit/:exerciseId',
         exact: true,
         component: EditExercisePage,
         routeLayout: ProtectedRouteLayout,
+        crumbs: [<Crumb title="Egzersizlerim" path="/app/my/exercises/" />, <ExerciseCrumb />],
       },
     ],
   },

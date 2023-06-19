@@ -28,6 +28,14 @@ export const nextQuestion = () => ({
   type: actionTypes.NEXT_QUESTION,
 });
 
+export const endExercise = () => ({
+  type: actionTypes.END_EXERCISE,
+});
+
+export const resetExercise = () => ({
+  type: actionTypes.RESET_EXERCISE,
+});
+
 export const getMyExercisesRequest = () => ({
   type: actionTypes.GET_MY_EXERCISES_REQUEST,
   payload: {},

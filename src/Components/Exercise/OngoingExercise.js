@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Question from '../Question/Question';
-import { nextQuestion } from '../../store/actions';
+import { endEditingExercise, endExercise, nextQuestion } from '../../store/actions';
+import ExerciseProgressBar from './ExerciseProgressBar';
 
 function OngoingExercise({ ...props }) {
   // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -25,8 +26,15 @@ function OngoingExercise({ ...props }) {
             >
               Prev Question
             </Button> */}
-            <div></div>
-            <Button size="sm" onClick={() => dispatch(nextQuestion())}>
+            {currentQuestionIndex < questions.length - 1 ? (
+              <Button variant="danger" onClick={() => dispatch(endExercise())}>
+                Burada Bitir
+              </Button>
+            ) : (
+              <div></div>
+            )}
+
+            <Button onClick={() => dispatch(nextQuestion())}>
               {currentQuestionIndex >= questions.length - 1 ? 'Egzersizi Sonlandır' : 'Sıradaki Soru'}
             </Button>
           </div>
@@ -35,7 +43,13 @@ function OngoingExercise({ ...props }) {
       <Row>
         <Col>
           <div className="p-2">
-            {currentQuestion && <Question key={currentQuestion.id} question={currentQuestion} />}{' '}
+            {currentQuestion && (
+              <Card>
+                <Card.Body>
+                  <Question key={currentQuestion.id} question={currentQuestion} />
+                </Card.Body>
+              </Card>
+            )}
           </div>
         </Col>
       </Row>
