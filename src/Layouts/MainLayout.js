@@ -28,8 +28,8 @@ function MainLayout() {
               <Row>
                 <Col xs={12} sm={6} className="d-flex flex-grow-1 align-items-center my-5">
                   <div className="display-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
+                    Özel yetenek sınavlarına hazırlanırken bir çok başlıkta pratik yapın ve kendi sorularınızı
+                    hazırlayın.
                   </div>
                 </Col>
                 <Col></Col>
@@ -38,10 +38,10 @@ function MainLayout() {
                 <Col className="d-flex flex-grow-1 align-items-center  my-2">
                   <Card style={{ minWidth: '300px', width: '500px', maxWidth: '500px' }}>
                     <Tabs defaultActiveKey="signin" id="sign-in-sign-up-card" className="mb-3" fill>
-                      <Tab eventKey="signin" title="Sign in">
+                      <Tab eventKey="signin" title="Giriş Yap">
                         <SignIn />
                       </Tab>
-                      <Tab eventKey="signup" title="Sign up">
+                      <Tab eventKey="signup" title="Kayıt Ol">
                         <SignUp />
                       </Tab>
                     </Tabs>

@@ -34,7 +34,7 @@ function CategoryDropdown({ category_id, onChange, ...props }) {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle as="div" className="d-flex align-items-center">
+      <Dropdown.Toggle variant="light" className="d-flex align-items-center">
         {getTypeName(category_id)}
       </Dropdown.Toggle>
       <Dropdown.Menu>{getOptions()}</Dropdown.Menu>

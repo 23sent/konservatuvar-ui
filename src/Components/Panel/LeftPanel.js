@@ -37,14 +37,14 @@ function LeftPanel({ ...props }) {
               {user.answer_count > 0 ? (
                 <>
                   <div className="py-2">
-                    <ProgressBar className="w-100" now={user.accuracy / user.answer_count} />
+                    <ProgressBar className="w-100" now={(user.accuracy / user.answer_count) * 100} />
                   </div>
                   <div>
                     Doğruluk Oranım: <b>{(user.accuracy / user.answer_count).toFixed()} %</b>
                   </div>
                   <div>
                     Cevapladığım Soru Sayısı: <b>{user.answer_count}</b>
-                  </div>{' '}
+                  </div>
                 </>
               ) : (
                 <>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
-import { ContentTypes } from '../../../Constants/question';
+import { ContentTypeNames, ContentTypes } from '../../../Constants/question';
 
 function ContentDropdown({ value, onChange, ...props }) {
   function handleSelect(type) {
@@ -10,14 +10,18 @@ function ContentDropdown({ value, onChange, ...props }) {
   function getOptions() {
     const options = [];
     for (const typeName in ContentTypes) {
-      options.push(<Dropdown.Item onClick={() => handleSelect(ContentTypes[typeName])}>{typeName}</Dropdown.Item>);
+      options.push(
+        <Dropdown.Item onClick={() => handleSelect(ContentTypes[typeName])}>
+          {ContentTypeNames[ContentTypes[typeName]]}
+        </Dropdown.Item>,
+      );
     }
     return options;
   }
 
   function getTypeName(type) {
-    for (const typeName in ContentTypes) {
-      if (ContentTypes[typeName] === type) return typeName;
+    if (ContentTypeNames[type]) {
+      return ContentTypeNames[type];
     }
     return 'Seçim Yapılmadı';
   }

@@ -23,18 +23,18 @@ function CreateExercise({ defaultExercise = {}, show, onHide, onSave, ...props }
     <Modal centered show={show} onHide={() => handleOnHide()}>
       <Modal.Body>
         <Form.Group>
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Başlık</Form.Label>
           <Form.Control value={exercise.title} onChange={(e) => setExercise({ ...exercise, title: e.target.value })} />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Açıklama</Form.Label>
           <Form.Control
             value={exercise.description}
             onChange={(e) => setExercise({ ...exercise, description: e.target.value })}
           />
         </Form.Group>
         <Form.Group>
-          <Form.Label>Category</Form.Label>
+          <Form.Label>Kategori</Form.Label>
           <CategoryDropdown
             category_id={exercise.category_id}
             onChange={(category_id) => setExercise({ ...exercise, category_id })}

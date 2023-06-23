@@ -16,16 +16,16 @@ function SignIn() {
     <Card.Body className="d-flex flex-column px-5" style={{ minHeight: '320px' }}>
       <div className="d-grid gap-3">
         <div>
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Eposta</Form.Label>
           <Form.Control type="text" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Şifre</Form.Label>
           <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
       </div>
       <div className="d-flex flex-grow-1 align-items-end justify-content-end">
-        <Button onClick={() => handleSignIn()}>Sign in</Button>
+        <Button onClick={() => handleSignIn()}>Giriş Yap</Button>
       </div>
     </Card.Body>
   );

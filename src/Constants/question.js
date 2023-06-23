@@ -1,7 +1,6 @@
 export const QuestionTypes = {
   MultiSelection: 'MULTI_SELECTION',
   Flashcard: 'FLASH_CARD',
-  TypedResponse: 'TYPED_RESPONSE',
   Rhythm: 'RHYTHM',
 };
 
@@ -10,6 +9,19 @@ export const ContentTypes = {
   AbcNotation: 'ABC_NOTATION',
   Image: 'IMAGE',
   Sound: 'SOUND',
+};
+
+export const QuestionTypeNames = {
+  [QuestionTypes.MultiSelection]: 'Çoktan Seçmeli',
+  [QuestionTypes.Flashcard]: 'Bilgi Kartı',
+  [QuestionTypes.Rhythm]: 'Ritim',
+};
+
+export const ContentTypeNames = {
+  [ContentTypes.Text]: 'Metin',
+  [ContentTypes.AbcNotation]: 'Müzikal Notasyon (Abc Notasyon)',
+  [ContentTypes.Image]: 'Resim',
+  [ContentTypes.Sound]: 'Ses',
 };
 
 // Example

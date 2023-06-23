@@ -17,20 +17,20 @@ function SignUp() {
     <Card.Body className="d-flex flex-column px-5" style={{ minHeight: '320px' }}>
       <div className="d-grid gap-3">
         <div>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>İsim</Form.Label>
           <Form.Control type="text" onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Eposta</Form.Label>
           <Form.Control type="text" onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Şifre</Form.Label>
           <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
       </div>
       <div className="d-flex flex-grow-1 align-items-end justify-content-end mt-3">
-        <Button onClick={() => handleSignUp()}>Sign up</Button>
+        <Button onClick={() => handleSignUp()}>Kayıt Ol</Button>
       </div>
     </Card.Body>
   );
